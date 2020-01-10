@@ -42,7 +42,25 @@
          "plugin:vue/essential",
          "eslint:recommended"
       ],
-      "rules": {},
+      "rules": {
+         "no-console": "off",
+         "no-restricted-syntax": [
+            "error",
+            {
+               "selector": "CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
+               "message": "Unexpected property on console object was called"
+            }
+         ],
+         "no-unused-vars": [
+            "error",
+            {
+               "vars": "local",
+               "args": "none",
+               "caughtErrors": "none",
+               "ignoreRestSiblings": true
+            }
+         ]
+      },
       "parserOptions": {
          "parser": "babel-eslint"
       }

@@ -1,6 +1,6 @@
 <template>
    <v-app>
-      <cv-appbar />
+      <cv-appbar v-if="signedIn" />
       <v-content>
          <div class="d-flex flex-no-wrap">
             <router-view />
@@ -10,18 +10,16 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Appbar from "./components/layouts/Appbar";
-
 export default {
    name: "App",
-
    components: {
-      "cv-appbar": Appbar,
+      "cv-appbar": Appbar
    },
-
-   data: () => ({
-      //
-   })
+   computed: {
+      ...mapGetters(["signedIn"])
+   }
 };
 </script>
 

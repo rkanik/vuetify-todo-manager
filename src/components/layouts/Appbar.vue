@@ -10,7 +10,7 @@
             <span> Manager</span>
          </v-toolbar-title>
          <v-spacer></v-spacer>
-         <v-btn depressed class="grey--text text--darken-3">
+         <v-btn @click="signoutAdmin" depressed class="grey--text text--darken-3">
             <span>Signout</span>
             <v-icon right>exit_to_app</v-icon>
          </v-btn>
@@ -32,6 +32,7 @@
    </nav>
 </template> 
 <script>
+import { mapActions } from "vuex";
 export default {
    name: "Appbar",
    data: () => ({
@@ -44,6 +45,9 @@ export default {
          { icon: "delete", text: "Delete", route: "/delete" },
          { icon: "about", text: "About", route: "/about" }
       ]
-   })
+   }),
+   methods: {
+      ...mapActions("Admin", ["signoutAdmin"])
+   }
 };
 </script>
